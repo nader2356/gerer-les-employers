@@ -1,0 +1,37 @@
+{
+  "kind": "collectionType",
+  "collectionName": "dms",
+  "info": {
+    "singularName": "dm",
+    "pluralName": "dms",
+    "displayName": "DM",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Etat": {
+      "type": "enumeration",
+      "enum": [
+        "Réception",
+        "Validation",
+        "Préparation"
+      ],
+      "required": true,
+      "default": "Réception"
+    },
+    "NQuittance": {
+      "required": true,
+      "type": "integer",
+      "default": 123,
+      "unique": true
+    },
+    "annee_comptables": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::annee-comptable.annee-comptable"
+    }
+  }
+}

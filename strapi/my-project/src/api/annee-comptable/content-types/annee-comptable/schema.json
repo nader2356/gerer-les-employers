@@ -1,0 +1,21 @@
+{
+  "kind": "collectionType",
+  "collectionName": "annee_comptables",
+  "info": {
+    "singularName": "annee-comptable",
+    "pluralName": "annee-comptables",
+    "displayName": "AnnéeComptable"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Annee": {
+      "type": "biginteger",
+      "required": true,
+      "unique": true,
+      "default": "2022"
+    }
+  }
+}

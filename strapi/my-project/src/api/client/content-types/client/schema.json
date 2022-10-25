@@ -1,0 +1,137 @@
+{
+  "kind": "collectionType",
+  "collectionName": "clients",
+  "info": {
+    "singularName": "client",
+    "pluralName": "clients",
+    "displayName": "Client",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "RaisonSociale": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "Adresse": {
+      "type": "string",
+      "default": "Sahloul,Louis marlouf",
+      "required": true
+    },
+    "ActivitePrincipale": {
+      "type": "string",
+      "default": "commerce",
+      "required": true
+    },
+    "MatriculeFiscale": {
+      "type": "string",
+      "required": true,
+      "default": "1282730/JJ/MM/000",
+      "unique": true
+    },
+    "Email": {
+      "type": "email",
+      "default": "nader@gmail.com",
+      "required": true
+    },
+    "NRegistreDeCommerce": {
+      "type": "string",
+      "required": true,
+      "default": "125412PAO",
+      "unique": true
+    },
+    "Fax": {
+      "type": "biginteger",
+      "required": true,
+      "unique": true,
+      "default": "12345678"
+    },
+    "Telephone": {
+      "type": "biginteger",
+      "required": true,
+      "unique": true,
+      "default": "12345682"
+    },
+    "FormeJuridique": {
+      "type": "enumeration",
+      "enum": [
+        "SARL",
+        "SUARL",
+        "INDIV",
+        "SA"
+      ]
+    },
+    "TypeClient": {
+      "type": "enumeration",
+      "enum": [
+        "Pharmacie",
+        "Médecin",
+        "Société",
+        "Néant"
+      ],
+      "required": true,
+      "default": "Pharmacie"
+    },
+    "Ville": {
+      "type": "enumeration",
+      "enum": [
+        "Tunis",
+        "Sousse",
+        "Hammamet",
+        "Kelibia"
+      ],
+      "required": true
+    },
+    "Bureau": {
+      "type": "enumeration",
+      "enum": [
+        "Tunis",
+        "Sousse"
+      ],
+      "required": true
+    },
+    "RegimeFiscale": {
+      "type": "enumeration",
+      "enum": [
+        "Réelle",
+        "Forfotaire",
+        "Forfait d asiette"
+      ],
+      "required": true
+    },
+    "ChargeClient": {
+      "type": "enumeration",
+      "enum": [
+        "Riadh",
+        "Samira",
+        "Wissem",
+        "Raouf",
+        "Mayssa",
+        "Intissar",
+        "Mohamed",
+        "Olfa"
+      ],
+      "required": true
+    },
+    "Param_DM": {
+      "type": "boolean",
+      "default": true,
+      "required": true
+    },
+    "annee_comptables": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::annee-comptable.annee-comptable"
+    },
+    "situations": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::situation.situation",
+      "mappedBy": "client"
+    }
+  }
+}

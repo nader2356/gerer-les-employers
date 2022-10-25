@@ -1,0 +1,52 @@
+{
+  "kind": "collectionType",
+  "collectionName": "cnsses",
+  "info": {
+    "singularName": "cnss",
+    "pluralName": "cnsses",
+    "displayName": "CNSS",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Type": {
+      "type": "enumeration",
+      "enum": [
+        "Salarié",
+        "Indépendant"
+      ],
+      "required": true,
+      "default": "Salarié"
+    },
+    "Date": {
+      "type": "date",
+      "required": true,
+      "default": "2022-10-28"
+    },
+    "Exploitant": {
+      "type": "string",
+      "required": true,
+      "default": "Fathi"
+    },
+    "NAffiliation": {
+      "type": "integer",
+      "unique": true,
+      "required": true,
+      "default": 13121354
+    },
+    "NExploitant": {
+      "type": "integer",
+      "unique": true,
+      "required": true,
+      "default": 45986745
+    },
+    "annee_comptables": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::annee-comptable.annee-comptable"
+    }
+  }
+}

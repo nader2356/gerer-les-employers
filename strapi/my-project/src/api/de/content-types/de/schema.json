@@ -1,0 +1,29 @@
+{
+  "kind": "collectionType",
+  "collectionName": "des",
+  "info": {
+    "singularName": "de",
+    "pluralName": "des",
+    "displayName": "DE",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Etat": {
+      "type": "enumeration",
+      "enum": [
+        "Préparation",
+        "Dépots"
+      ]
+    },
+    "NQuittance": {
+      "type": "integer",
+      "default": 123652654,
+      "required": true,
+      "unique": true
+    }
+  }
+}
