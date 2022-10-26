@@ -2,10 +2,11 @@
 import Cookie from "universal-cookie";
 import { useState } from "react";
 import axios from "axios";
+import Env from "../util/config.js"
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import google from "../../src/google-icon.svg";
-import facebook from "../../src/facebook.png";
+import google from "../assets/google-icon.svg";
+import facebook from "../assets/facebook.png";
 const initialState = {
   email: "",
   password: "",
@@ -23,7 +24,7 @@ const SignIn = () => {
     e.preventDefault();   
       const options = {
         method: "POST",
-        url: "http://localhost:1337/api/auth/local",
+        url: `${Env.URL_STRAPI_API}/auth/local`,
         data: {
           identifier : email,
           password: password,
@@ -46,6 +47,8 @@ const SignIn = () => {
     <>
     <ToastContainer></ToastContainer>
     <div className="flex min-h-screen flex-col justify-center bg-[#f3f4f6] py-[5%] sm:px-6 lg:px-8">
+
+     
       <div className="text-center sm:mx-auto sm:w-full sm:max-w-md">
         <h2 className="font-mono text-center text-3xl text-neutral-900">
           Bienvenu de nouveau
@@ -63,7 +66,8 @@ const SignIn = () => {
                     className="mb-2 block h-9 w-full rounded-md border border-gray-300 py-2 px-3 text-sm
                                      placeholder:text-gray-400 hover:border-gray-400 focus:border-neutral-300 focus:outline-none 
                                     focus:ring-2 focus:ring-neutral-800 focus:ring-offset-1"
-                    value={email}
+                   
+                    placeholder="john.doe@example.com"
                     name="email"
                     onChange={handleChangeInput}></input>
                 <div className="relative">
@@ -79,7 +83,7 @@ const SignIn = () => {
                     <input
                       className="mb-2 block h-9 w-full rounded-md border border-gray-300 py-2 px-3 text-sm
                                      placeholder:text-gray-400 hover:border-gray-400 focus:border-neutral-300 focus:outline-none 
-                                    focus:ring-2 focus:ring-neutral-800 focus:ring-offset-1"
+                                    focus:ring-2 focus:ring-neutral-800 focus:ring-offset-1" placeholder="..............."
                       value={password} name="password" onChange={handleChangeInput}></input>
                   </div>
                 </div>
@@ -106,7 +110,7 @@ const SignIn = () => {
         px-4 py-2.5 rounded-md border border-gray-200 text-slate-900 bg-white
          hover:bg-gray-100 w-full justify-center"
             >
-              <img className="mr-2 ml-3  h-5 w-5" src={facebook} alt=""/>
+              <img className="mr-2 ml-4  h-5 w-5" src={facebook} alt=""/>
               Se connecter avec Facebook
             </button>
           </div>

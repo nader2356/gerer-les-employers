@@ -11,7 +11,6 @@ function App() {
     <Route path='/SignIn' exact component={SignIn} />
     <Route path='/SignUp'  component={SignUp} />
     <Route path='/Home'  component={Home} />
-    
      </BrowserRouter>
   );
 }

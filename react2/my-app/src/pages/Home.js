@@ -3,12 +3,12 @@ import Cookie from "universal-cookie";
 import { ToastContainer, toast } from 'react-toastify';
 import axios from "axios";
 import { useEffect, useState} from "react";
+import NavBar from "../component/NavBar";
 
 export default function Home ()  {
 
-  const [Nom, setNom] = useState(null);
-  const [Prenom, setPrenom] = useState(null);
-  const [Email, setEmail] = useState("");
+  const [Nom, setNom] = useState("");
+  const [Prenom, setPrenom] = useState("");
   const [user , SetUser] = useState({});
   const cookie = new Cookie();
   const jwt = cookie.get("access_token")
@@ -39,6 +39,7 @@ export default function Home ()  {
   };
   FetchListClient()
 },
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   []);
 
   const HandleSubmit =  async (e) => {
@@ -48,12 +49,12 @@ export default function Home ()  {
       url: `http://localhost:1337/api/users/${user.id}`,
       data: {
         Nom:  Nom,
-        Prenom: Prenom,
-        email: Email,
+        Prenom: Prenom
       },
     };
     axios.request(options).then(function (response) {
-      toast.success("Utilisateur ajouter avec succées !")
+      console.log(response)
+      //toast.success("Utilisateur ajouter avec succées !")
     })  
   .catch(function (error) {
      toast.success(error.response.data.error.message)
@@ -65,7 +66,9 @@ export default function Home ()  {
     <>
     <ToastContainer></ToastContainer>
     <div className=" min-h-screen bg-gray-100">
-      <div className="mx-auto px-4 py-6 md:py-24">
+
+     <NavBar/>
+      <div className="mx-auto px-4 py-6  md:py-12">
         <div className="relative">
           <div className="sm:mx-auto sm:w-full sm:max-w-[600px]">
             <div className="mx-auto sm:max-w-[520px]">
@@ -95,8 +98,8 @@ export default function Home ()  {
               </div>
             </div>
 
-            <div className="mt-10 rounded-md  ml-[1%] border border-gray-200 bg-white p-4 dark:bg-black sm:p-8">
-              <form onSubmit={HandleSubmit}>
+            <div className="mt-10 rounded-md   border border-gray-200 bg-white p-4 dark:bg-black sm:p-8">
+              <form  >
                 <div className="space-y-6">
                   <div>
                     <div className="flex justify-items-center">
@@ -107,12 +110,12 @@ export default function Home ()  {
 
                     <div className="mt-2 flex rounded-md">
                       <div className="relative w-full">
-                        <input className="mb-2 block h-9 w-full rounded-md border border-gray-300 py-2 px-3 text-sm 
+                        <input className=" mt-2 block h-9 w-full  border border-gray-300 py-2 px-3  
                         placeholder:text-gray-400 hover:border-gray-400 focus:border-neutral-300 
                         focus:outline-none focus:ring-2 focus:ring-neutral-800 focus:ring-offset-1 border-l-1 
-                        mb-0 mt-0 rounded-md rounded-l-none font-sans text-sm leading-4 focus:!ring-0 border-1 1
-                        focus:border-2 border-l-gray-300 bg-gray-100 text-gray-400 focus:border-0" 
-                        defaultValue={user.Nom}
+                        rounded-md rounded-l-none font-sans text-sm leading-4 focus:!ring-0 border-1 1
+                        focus:border-5 border-l-gray-300 bg-gray-100 text-gray-900 " 
+                        value={user.Nom}
                         onChange={(e) => setNom(e.target.value)}></input>
                       </div>
                     </div>
@@ -122,30 +125,18 @@ export default function Home ()  {
                      Prenom d utilisateur                 
                     </label>
 
-                    <input className=" block h-9 w-full rounded-md border border-gray-300 py-2 px-3 text-sm
+                    <input className=" block h-9 w-full rounded-md border border-gray-300 py-2 px-3 
                      placeholder:text-gray-400 hover:border-gray-400 focus:border-neutral-300 focus:outline-none 
-                     focus:ring-2 focus:ring-neutral-800 focus:ring-offset-1 border-l-1 mb-0 mt-0 rounded-md rounded-l-none 
-                     font-sans text-sm leading-4 focus:!ring-0 border-1 focus:border-2 border-l-gray-300 bg-gray-100
-                    text-gray-400 focus:border-0"
-                    defaultValue={user.Prenom}
+                     focus:ring-2 focus:ring-neutral-800 focus:ring-offset-1 border-l-1 mb-0 mt-0 rounded-l-none 
+                     font-sans text-sm leading-4 focus:!ring-0 border-1 focus:border-5 border-l-gray-300 bg-gray-100
+                    text-gray-900"
+                    value={user.Prenom}
                     onChange={(e) => setPrenom(e.target.value)} ></input>
                   </div>
 
-                  <div className="w-full">
-                    <label className="mb-5 block text-sm font-medium text-gray-700">
-                    adresse email utilisateur{""}
-                    </label>
-                    <input className=" block h-9 w-full rounded-md border border-gray-300 py-2 px-3 text-sm 
-                    placeholder:text-gray-400 hover:border-gray-400 focus:border-neutral-300 focus:outline-none 
-                    focus:ring-2 focus:ring-neutral-800 focus:ring-offset-1 border-l-1 mb-0 mt-0 
-                    rounded-md rounded-l-none font-sans text-sm leading-4 focus:!ring-0 border-1 
-                    focus:border-2 border-l-gray-300 bg-gray-100 text-gray-400 
-                    focus:border-0"
-                     defaultValue={user.email}
-                    onChange={(e) => setEmail(e.target.value)} ></input>
-                  </div>
+                
                 </div>
-                <button className="inline-flex items-center text-sm font-medium relative h-9 px-4 py-2.5   rounded-md border border-transparent text-white bg-slate-900 hover:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-brand-500 mt-8 flex w-full flex-row justify-center">
+                <button onClick={HandleSubmit} className=" items-center text-sm font-medium relative h-9 px-4 py-2.5   rounded-md border border-transparent text-white bg-slate-900 hover:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-brand-500 mt-8 flex w-full flex-row justify-center">
                   Submit
                 </button>
               </form>

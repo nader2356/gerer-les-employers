@@ -1,13 +1,14 @@
 /* eslint-disable jsx-a11y/img-redundant-alt */
 /* eslint-disable no-undef */
 
-import i from "../../src/undraw_remotely_2j6y.svg";
+import i from "../assets/undraw_remotely_2j6y.svg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {faTimes,faCheck} from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
 import { useState } from "react";
-import google from "../../src/google-icon.svg";
-import visibilityIcon from "../../src/visibilityIcon.svg";
+import Env from "../util/config.js"
+import google from "../assets/google-icon.svg";
+import visibilityIcon from "../assets/visibilityIcon.svg";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Cookie from "universal-cookie";
@@ -117,7 +118,7 @@ const cookie = new Cookie();
     e.preventDefault();
     const options = {
       method: "POST",
-      url: "http://localhost:1337/api/auth/local/register",
+      url: `${Env.URL_STRAPI_API}/auth/local/register`,
       data: {
         username: Username,
         email: Email,
@@ -357,8 +358,8 @@ const cookie = new Cookie();
               </div>
             </div>
           </div>
-          <div className=" border-gray-200 bg-gray-50 px-4 py-6 sm:px-10 text-center">
-            <a href="/SignIn" className="text-md  leading-5 text-gray-500 ">
+          <div className=" border-gray-200 bg-gray-50  py-3 sm:px-10 text-center">
+            <a href="/SignIn" className="text-sm  leading-5 text-gray-500 ">
             Déjà inscrit(e) ? <span className="text-[#0a66c2]">S’identifier</span>
             </a>
           </div>

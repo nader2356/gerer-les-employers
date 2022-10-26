@@ -70,12 +70,12 @@
       "mappedBy": "users_permissions_user"
     },
     "Nom": {
-      "type": "string",
+      "type": "text",
       "required": false,
       "unique": false
     },
     "Prenom": {
-      "type": "string",
+      "type": "text",
       "required": false,
       "unique": false
     }
