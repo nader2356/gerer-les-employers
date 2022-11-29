@@ -1,0 +1,31 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.tracker-box{ 
+    font-size: 14px;
+    color: black;
+    letter-spacing: 0.09em;
+  }
+  .tracker-box div{
+    margin: 5px 0;
+  }
+  .tracker-box .validated{
+    color: rgb(21 128 61);
+  }
+
+  .image {
+    width:2px;
+  }
+ 
+  .tracker-box .not-validated{
+    color: rgb(220 38 38);
+  }
+  .list-icon{
+    margin-right: 8px;
+    color: rgb(220 38 38);
+  }
+  
+  .list-icon.green{
+    color: rgb(21 128 61);
+  }
